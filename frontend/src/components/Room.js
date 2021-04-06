@@ -12,11 +12,12 @@ export default class Room extends Component {
       showSettings: false,
     };
     this.roomCode = this.props.match.params.roomCode;
-    this.getRoomDetails();
     this.leaveButtonPressed = this.leaveButtonPressed.bind(this);
     this.updateShowSettings = this.updateShowSettings.bind(this);
     this.renderSettingsButton = this.renderSettingsButton.bind(this);
     this.renderSettings = this.renderSettings.bind(this);
+    this.getRoomDetails = this.getRoomDetails.bind(this);
+    this.getRoomDetails();
   }
 
   getRoomDetails() {
@@ -49,7 +50,6 @@ export default class Room extends Component {
   }
 
   updateShowSettings(value) {
-    console.log("here 0");
     this.setState({
       showSettings: value,
     });
@@ -64,7 +64,7 @@ export default class Room extends Component {
             votesToSkip={this.state.votesToSkip}
             guestCanPause={this.state.guestCanPause}
             roomCode={this.roomCode}
-            updateCallBack={() => {}}
+            updateCallBack={this.getRoomDetails}
           />
         </Grid>
         <Grid item xs={12} align="center">
@@ -95,7 +95,6 @@ export default class Room extends Component {
   }
   render() {
     if (this.state.showSettings) {
-      console.log("here 1");
       return this.renderSettings();
     }
 
