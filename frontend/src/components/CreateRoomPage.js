@@ -18,7 +18,7 @@ export default class CreateRoomPage extends Component {
     guestCanPause: true,
     update: false,
     roomCode: null,
-    updateCallback: () => {},
+    updateCallBack: () => {},
   };
 
   constructor(props) {
@@ -65,7 +65,7 @@ export default class CreateRoomPage extends Component {
   handleUpdateButtonPressed() {
     const requestOptions = {
       method: "PATCH",
-      headers: { "Content-Type": "applicatoin/json" },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         votes_to_skip: this.state.votesToSkip,
         guest_can_pause: this.state.guestCanPause,
@@ -83,7 +83,7 @@ export default class CreateRoomPage extends Component {
           errorMsg: "Error Updating!",
         });
       }
-      this.props.updateCallback();
+      this.props.updateCallBack();
     });
   }
 
